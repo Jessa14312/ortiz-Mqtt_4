@@ -1,0 +1,128 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MQTT_4</title>
+    <link rel="shortcut icon" href="https://cdn.shopify.com/s/files/1/0174/2162/products/DYKE_AND_DEAN_BLUE_PORCELAIN_CERAMIC_CALEDO_KATY_PATY_ROUND_WALL_SOCKET_SCHUKO.png?v=1612830291">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+
+<body>
+
+        <h1 style=" text-shadow: 2px 2px peachpuff;text-align: center;">MQTT Over Web Socket</h1>
+    <div class="container-fluid">
+        <div class="row justify-content-around">
+            <div class="container-fluid col-lg-4 col-md-12 col-sm-12 mt-4">
+                <div style="background-color:lightgray;padding:15px;margin-bottom:13%" class="card">
+                    <div style="background-color:black;color: white;" class="card-header h3">Broker</div>
+                    <div class="card-body" style="background-color: peachpuff">
+                        <div class="form-group">
+                            <strong>Address: </strong>
+                            <input type="text" class="form-control" id="address" name="address" value="wss://test.mosquitto.org:8081/mqtt">
+                            <br>
+                            <button style="background-color: green; color: white" type="button" class="btn" id="broker">Connect</button>
+                            <button style="background-color:lightgray" type="button" class="btn ">Disconnect</button>
+                            <br>
+                            <br>
+                            <strong>Status: </strong>
+                            <input type="text" class="form-control" id="status" name="status" placeholder="Press Connect">
+                        </div>
+                    </div>
+                </div>
+                <div style="background-color:lightgray; padding: 15px" class="card">
+                    <div style="background-color:black;color:white" class="card-header h4">Incoming Messages</div>
+                    <div class="card-body" style="background-color: peachpuff">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Topic</th>
+                                    <th scope="col">Payload</th>
+                                    <th scope="col">Time Stamp</th>
+                                </tr>
+                            </thead>
+                            <tbody id="incomingData">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container-fluid col-lg-4 col-md-12 col-sm-12 mt-4">
+                <div style="background-color: lightgray;margin-bottom:13%;padding: 15px;" class="card">
+                    <div  style= "background-color:black"; class="card-header text-white h3">Publish</div>
+                    <div class="card-body" style="background-color: peachpuff">
+                        <div class="form-group">
+                            <strong>Topic: </strong>
+                            <input type="text" class="form-control" id="pub-topic" name="pub-topic" placeholder="Input Topic" required>
+                            <br>
+                            <strong>Payload: </strong>
+                            <input type="text" class="form-control" id="pub-payload" name="pub-payload" placeholder="Input Payload:" required>
+                            <br>
+                            <button style="background-color: green;color:white" type="button" class="btn" id="pub-button">Publish</button>
+                        </div>
+                    </div>
+                </div>
+                <div style="background-color: lightgray; padding:15px; " class="card">
+                    <div style="background-color: black;color: white;" class="card-header h4">Publish Messages</div>
+                    <div class="card-body" style="background-color: peachpuff">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Topic</th>
+                                    <th>Payload</th>
+                                    <th>Time Stamp</th>
+                                </tr>
+                            </thead>
+                            <tbody id="publishData">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container-fluid col-lg-4 col-md-12 col-sm-12 mt-4">
+                <div style="background-color:lightgray; padding:15px; margin-bottom: 38%;" class="card">
+                    <div style="background-color:black; color:white" class="card-header h3">Subscribe</div>
+                    <div class="card-body" style="background-color: peachpuff">
+                        <div class="form-group">
+                            <strong>Topic: </strong>
+                            <input type="text" class="form-control" id="sub-topic" name="sub-topic" placeholder="Input Topic" required>
+                            <br>
+                            <button style="background-color:green; color:white;" type="button" class="btn" id="sub-button">Subscribe</button>
+                            <button style="background-color: lightgray;" type="button" class="btn">Unsubscribe</button>
+                        </div>
+                    </div>
+                </div>
+                <div style="background-color: lightgray;padding:15px;"  class="card">
+                    <div style="background-color:black" class="card-header text-white h4">Subcribed Messages</div>
+                    <div class="card-body" style="background-color: peachpuff">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Topic</th>
+                                    <th scope="col">Time Stamp</th>
+                                </tr>
+                            </thead>
+                            <tbody id="SubscribedData">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+
+<script src="./browserMqtt.js"></script>
+<script src="./index.js"></script>
+
+</html>
